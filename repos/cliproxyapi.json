@@ -1,0 +1,11 @@
+{
+  "id": "cliproxyapi",
+  "github": "router-for-me/CLIProxyAPI",
+  "path": "sources/cliproxyapi",
+  "ref": "main",
+  "notes": "方案 A 源码。改协议/伪装走这棵树，不要改 brew 包。",
+  "build": {
+    "command": ["go", "build", "-o", "bin/cliproxyapi", "./cmd/server"]
+  },
+  "bin": "bin/cliproxyapi"
+}

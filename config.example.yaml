@@ -1,0 +1,21 @@
+# CLIProxyAPI 本机最小配置样例（无密钥）。
+# 真正跑的那份在 ~/.cli-proxy-api/config.yaml（gitignore，chmod 600）。
+# Homebrew 默认读 /opt/homebrew/etc/cliproxyapi.conf，已 symlink 到上面那份。
+
+host: "127.0.0.1"
+port: 8317
+auth-dir: "~/.cli-proxy-api"
+
+# 自己签发的访问口令，不是 OpenAI key。下游用 Bearer / ANTHROPIC_AUTH_TOKEN。
+api-keys:
+  - "replace-me"
+
+# 访问 chatgpt.com 需要本机代理时再填，例: http://127.0.0.1:7897
+proxy-url: ""
+
+routing:
+  strategy: "round-robin"
+  session-affinity: false
+
+codex:
+  disable-codex-cloaking: false
