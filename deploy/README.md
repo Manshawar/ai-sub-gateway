@@ -7,6 +7,24 @@ sudo bash deploy/install.sh
 sudo bash deploy/login.sh
 ```
 
+If the server cannot reach GitHub, clone this repository through the configured
+mirror from a fresh server shell:
+
+```bash
+cd /opt
+curl -fL https://ghfast.top/https://github.com/Manshawar/ai-sub-gateway/archive/refs/heads/main.tar.gz -o ai-sub-gateway.tgz
+tar -xzf ai-sub-gateway.tgz
+mv ai-sub-gateway-main ai-sub-gateway
+cd ai-sub-gateway
+sudo bash deploy/install.sh
+```
+
+The installer uses `https://ghfast.top` for the upstream binary installer by
+default. To use another URL-prefix mirror, set `CPA_GITHUB_MIRROR`, for example
+`CPA_GITHUB_MIRROR=https://gh-proxy.com`. Use `CPA_GITHUB_MIRROR=direct` for
+direct GitHub access. These are community mirrors, so use a trusted mirror or
+preinstall/pin the binary when supply-chain verification is required.
+
 The installer creates a dedicated `cliproxyapi` system user, stores OAuth data
 in `/var/lib/ai-sub-gateway/auth`, and runs one hardened systemd service. The
 API binds to `127.0.0.1:8317` by default, suitable when Clawbot is on the same

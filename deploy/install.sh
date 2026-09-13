@@ -11,7 +11,14 @@ BIN_PATH="${CPA_BIN_PATH:-/usr/local/bin/cliproxyapi}"
 CONFIG_PATH="$CONF_DIR/config.yaml"
 ENV_PATH="$CONF_DIR/gateway.env"
 UNIT_PATH="/etc/systemd/system/${SERVICE_NAME}.service"
-INSTALLER_URL="${CPA_INSTALLER_URL:-https://raw.githubusercontent.com/router-for-me/cliproxyapi-installer/refs/heads/master/cliproxyapi-installer}"
+# Community GitHub proxy. Set CPA_GITHUB_MIRROR=direct to disable it.
+CPA_GITHUB_MIRROR="${CPA_GITHUB_MIRROR:-https://ghfast.top}"
+UPSTREAM_INSTALLER_URL="https://raw.githubusercontent.com/router-for-me/cliproxyapi-installer/refs/heads/master/cliproxyapi-installer"
+if [[ "$CPA_GITHUB_MIRROR" == "direct" || -z "$CPA_GITHUB_MIRROR" ]]; then
+  INSTALLER_URL="${CPA_INSTALLER_URL:-$UPSTREAM_INSTALLER_URL}"
+else
+  INSTALLER_URL="${CPA_INSTALLER_URL:-$CPA_GITHUB_MIRROR/$UPSTREAM_INSTALLER_URL}"
+fi
 
 die() { echo "error: $*" >&2; exit 1; }
 need() { command -v "$1" >/dev/null 2>&1 || die "missing command: $1"; }
