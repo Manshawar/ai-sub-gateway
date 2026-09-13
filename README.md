@@ -69,6 +69,7 @@ Pi 未装。Pi 官方支持 Sign in with ChatGPT（Tibo 点名的「正常客户
 ## 待补
 
 - [x] 方案 A 本机安装 + 配置样例（`config.example.yaml`）+ cc-switch `cpa-codex`
+- [x] Linux 一键部署（systemd + 专用用户 + Clash 出网代理参数）：[`deploy/README.md`](deploy/README.md)
 - [ ] 方案 A 模型映射三件套（等 `cpa-login` 后按 `/v1/models` 实表填）
 - [ ] 方案 B 部署清单与拼车分工约定
 - [ ] 两个方案的实测记录（额度消耗、稳定性、工具调用表现）
